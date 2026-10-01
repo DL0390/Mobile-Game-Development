@@ -83,6 +83,14 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = moveInput * speed;
         }
+    }
+
+        public class MobileMoveReader : MonoBehaviour
+    {
+        [SerializeField] InputActionReference moveAction;
+
+        void OnEnable() => moveAction.action.Enable();
+        void OnDisable() => moveAction.action.Disable();
 
     }
 }
