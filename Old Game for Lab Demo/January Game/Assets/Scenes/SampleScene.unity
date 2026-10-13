@@ -7145,6 +7145,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2659238255350329588, guid: 20bdf90031571a840bb0d57911b63666, type: 3}
   m_PrefabInstance: {fileID: 1065630881}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &803396793 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1578503555136747963, guid: 20bdf90031571a840bb0d57911b63666, type: 3}
+  m_PrefabInstance: {fileID: 1065630881}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &830651564
 GameObject:
   m_ObjectHideFlags: 0
@@ -8421,6 +8426,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3030500049065850726, guid: 20bdf90031571a840bb0d57911b63666, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 803396793}
     - target: {fileID: 6508315221000925760, guid: 20bdf90031571a840bb0d57911b63666, type: 3}
       propertyPath: m_Name
       value: player_idle_rifle_Sheet_0

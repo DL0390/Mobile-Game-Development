@@ -47,14 +47,14 @@ public class PlayerMovement : MonoBehaviour
         PlayerRotation();
 
         // checks mouse click to trigger shooting animation
-        if (attackAction.IsPressed())
-        {
-            animator.SetBool("isShooting", true);
-        }
-        else
-        {
-            animator.SetBool("isShooting", false);
-        }
+        //if (attackAction.IsPressed())
+        //{
+        //    animator.SetBool("isShooting", true);
+        //}
+        //else
+        //{
+        //    animator.SetBool("isShooting", false);
+        //}
 
     }
 

@@ -1,8 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+using UnityEditor.Experimental.GraphView;
 
 public class Shooting : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
     private InputAction attackAction;
     public GameObject bullet;
     public Transform bulletTransform;
@@ -31,10 +34,15 @@ public class Shooting : MonoBehaviour
         }
 
         // to make bullet fire
-        if (attackAction.IsPressed() && canFire)
+        if (attackAction.WasPressedThisFrame() && canFire && !EventSystem.current.IsPointerOverGameObject())  //(attackAction.IsPressed() && canFire)
         {
             canFire = false;
             Instantiate(bullet, bulletTransform.position, Quaternion.identity);
+            animator.SetBool("isShooting", true);    
+        }
+        else
+        {
+            animator.SetBool("isShooting", false);
         }
     }
 }
