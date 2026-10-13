@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Shooting : MonoBehaviour
 {
-    
+    private InputAction attackAction;
     public GameObject bullet;
     public Transform bulletTransform;
     public bool canFire;
@@ -12,17 +13,17 @@ public class Shooting : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        attackAction = InputSystem.actions.FindAction("Attack");
     }
 
     // Update is called once per frame
     void Update()
     {
-       // adds cooldown for each bullet, preventing rapid fire
+        // adds cooldown for each bullet, preventing rapid fire
         if (!canFire)
         {
             timer += Time.deltaTime;
-            if(timer > timeBetweenFiring )
+            if (timer > timeBetweenFiring)
             {
                 canFire = true;
                 timer = 0;
@@ -30,11 +31,12 @@ public class Shooting : MonoBehaviour
         }
 
         // to make bullet fire
-        if (Input.GetMouseButton(0) && canFire)
+        if (attackAction.IsPressed() && canFire)
         {
             canFire = false;
             Instantiate(bullet, bulletTransform.position, Quaternion.identity);
         }
     }
 }
+
 

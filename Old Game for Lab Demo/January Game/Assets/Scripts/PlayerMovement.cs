@@ -8,11 +8,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     public bool canFire;
     InputAction moveAction;
+    InputAction attackAction;
     Camera mainCamera;
     Rigidbody2D rb;
     void Start()
     {
+
         moveAction = InputSystem.actions.FindAction("Move");
+        attackAction = InputSystem.actions.FindAction("Attack");
+
     }
 
     void Awake()
@@ -23,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
+    {
         // makes player move
         Vector2 moveInput = moveAction.ReadValue<Vector2>();
         GetComponent<Rigidbody2D>().linearVelocity = speed * moveInput;
@@ -40,10 +44,10 @@ public class PlayerMovement : MonoBehaviour
             //rb.linearVelocity = Vector2.zero;
         }
 
-            PlayerRotation();
+        PlayerRotation();
 
         // checks mouse click to trigger shooting animation
-        if (Input.GetMouseButton(0))
+        if (attackAction.IsPressed())
         {
             animator.SetBool("isShooting", true);
         }
@@ -56,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
 
     void PlayerRotation()
     {
-       // Player rotation based on mouse position
+        // Player rotation based on mouse position
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
 
         Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(mouseScreenPos);
@@ -83,7 +87,14 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = moveInput * speed;
         }
+    }
+
+    public class MobileMoveReader : MonoBehaviour
+    {
+        [SerializeField] InputActionReference moveAction;
+
+        void OnEnable() => moveAction.action.Enable();
+        void OnDisable() => moveAction.action.Disable();
 
     }
 }
-
