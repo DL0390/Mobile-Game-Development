@@ -5,7 +5,7 @@ public class WheelScript : MonoBehaviour
 {
     private WheelJoint2D wheel;
     private JointMotor2D motor;
-    public float speed;
+    public float speed = 0f;
     InputAction accelerateAction;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
