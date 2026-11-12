@@ -21,8 +21,7 @@ public class WheelScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float hForce = accelerateAction.ReadValue<float>();                                                                                                                          //Input.GetAxis("Horizontal");
-
+        float hForce = accelerateAction.ReadValue<float>();
         motor.motorSpeed = speed * hForce;
 
         wheel.motor = motor;
